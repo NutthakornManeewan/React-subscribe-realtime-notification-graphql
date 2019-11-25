@@ -10,7 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 const App = () => {
     useEffect(data => {
         // * Incoming data ==> { data: { newNotification: { label } } }
-        // * toast(label);
+        toast(data.newNotification["label"]);
         console.log("data in useEffect >>>", data);
         return () => {};
     }, []);
