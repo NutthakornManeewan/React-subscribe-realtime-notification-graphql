@@ -3,8 +3,8 @@ import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
 const POST_MUTATION = gql`
-    mutation pushNotification($label: String!) {
-        pushNotification(label: $label) {
+    mutation pushNotification($label: String!, $id: String) {
+        pushNotification(label: $label, id: $id) {
             label
         }
     }
@@ -13,8 +13,9 @@ const POST_MUTATION = gql`
 const PushNotification = props => {
     const [label, setLabel] = useState("");
     const [postNoti, { data }] = useMutation(POST_MUTATION);
+
     const _pushNotification = async () => {
-        postNoti({ variables: { label } });
+        postNoti({ variables: { label, id: "aek" } });
         setLabel("");
     };
 
