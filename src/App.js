@@ -7,13 +7,12 @@ import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { ToastContainer, toast } from "react-toastify";
 
-const App = () => {
-    useEffect(data => {
-        // * Incoming data ==> { data: { newNotification: { label } } }
-        toast(data.newNotification["label"]);
-        console.log("data in useEffect >>>", data);
+const App = props => {
+    useEffect(() => {
+        if (!props.data.loading && !!!props.data.error)
+            toast(props.data.newNotification["label"]);
         return () => {};
-    }, []);
+    }, [props]);
 
     return (
         <div className="App">

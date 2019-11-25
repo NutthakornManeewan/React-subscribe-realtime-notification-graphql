@@ -11,11 +11,11 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-const ENDPOINT = "172.30.53.42:4000";
+const ENDPOINT = "172.30.53.42:5000";
 
 const httpLink = new HttpLink({ uri: `http://${ENDPOINT}/graphql` });
 const wsLink = new WebSocketLink({
-    uri: `ws://${ENDPOINT}/subscriptions`,
+    uri: `ws://${ENDPOINT}/graphql`,
     options: { reconnect: true },
 });
 const link = split(
